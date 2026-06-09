@@ -167,6 +167,15 @@ function timeline(steps) {
   `;
 }
 
+function screenshotFigure(src, alt, caption) {
+  return `
+    <figure class="screenshot-card">
+      <img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" />
+      <figcaption>${escapeHtml(caption)}</figcaption>
+    </figure>
+  `;
+}
+
 function chartShell(chartHtml, insight, question, accent = COLORS.red) {
   return `
     <div class="chart-layout">
@@ -431,9 +440,16 @@ const slides = [
         { title: "4 생성", subtitle: "Create account" },
         { title: "5 인증", subtitle: "이메일 확인" },
       ])}
-      <div class="grid grid--2" style="margin-top:30px">
-        ${card("GitHub가 필요한 이유", "GitHub는 파일을 저장하고 변경 기록을 남기는 웹 서비스입니다. 오늘은 완성한 HTML 발표자료를 GitHub Pages 링크로 배포할 때 사용합니다.", COLORS.blue)}
-        ${card("현장 안내", "사용자명은 공개 주소에 들어갑니다.\n오늘 실습은 유료 결제가 필요 없습니다.\n인증 메일이 안 보이면 스팸함과 기관 메일 차단을 확인합니다.", COLORS.red)}
+      <div class="screenshot-layout screenshot-layout--signup">
+        ${screenshotFigure(
+          "./assets/github-signup-form.png",
+          "GitHub 가입 화면: 이메일, 비밀번호, 사용자명, 국가/지역 입력 후 Create account 버튼을 누르는 공개 가입 양식",
+          "github.com/signup 공개 가입 화면",
+        )}
+        <div class="insight-stack">
+          ${card("GitHub가 필요한 이유", "GitHub는 파일을 저장하고 변경 기록을 남기는 웹 서비스입니다. 오늘은 완성한 HTML 발표자료를 GitHub Pages 링크로 배포할 때 사용합니다.", COLORS.blue)}
+          ${card("현장 안내", "사용자명은 공개 주소에 들어갑니다.\n오늘 실습은 유료 결제가 필요 없습니다.\n인증 메일이 안 보이면 스팸함과 기관 메일 차단을 확인합니다.", COLORS.red)}
+        </div>
       </div>
     `,
     notes: "GitHub를 모르는 참가자에게는 '자료를 올려두고 링크로 나누는 공간' 정도로 설명하면 충분합니다. 가입 화면 문구는 바뀔 수 있으니 주소와 이메일 인증만 분명히 잡습니다.",

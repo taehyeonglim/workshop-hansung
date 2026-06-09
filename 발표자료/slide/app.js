@@ -182,7 +182,7 @@ function chartShell(chartHtml, insight, question, accent = COLORS.red) {
 function svgLineChart(data, title) {
   const width = 720;
   const height = 390;
-  const margin = { top: 86, right: 44, bottom: 72, left: 92 };
+  const margin = { top: 58, right: 44, bottom: 54, left: 70 };
   const yMin = 330;
   const yMax = 580;
   const plotW = width - margin.left - margin.right;
@@ -200,7 +200,7 @@ function svgLineChart(data, title) {
     .join("");
   return `
     <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(title)}">
-      <text class="chart-title" x="${margin.left}" y="48">${escapeHtml(title)}</text>
+      <text class="chart-title" x="${margin.left}" y="28">${escapeHtml(title)}</text>
       ${grid}
       <line class="chart-axis" x1="${margin.left}" x2="${width - margin.right}" y1="${margin.top + plotH}" y2="${margin.top + plotH}" />
       <polyline points="${points}" fill="none" stroke="${COLORS.teal}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
@@ -220,14 +220,14 @@ function svgLineChart(data, title) {
 function svgHorizontalBarChart(data, title) {
   const width = 720;
   const height = 390;
-  const margin = { top: 86, right: 42, bottom: 34, left: 150 };
+  const margin = { top: 58, right: 42, bottom: 28, left: 104 };
   const plotW = width - margin.left - margin.right;
   const barH = 40;
   const gap = 16;
   const max = Math.max(...data.map((d) => d.total));
   return `
     <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(title)}">
-      <text class="chart-title" x="${margin.left}" y="48">${escapeHtml(title)}</text>
+      <text class="chart-title" x="${margin.left}" y="28">${escapeHtml(title)}</text>
       ${data
         .map((d, idx) => {
           const y = margin.top + idx * (barH + gap);
@@ -246,7 +246,7 @@ function svgHorizontalBarChart(data, title) {
 function svgDropoutChart(data, title) {
   const width = 720;
   const height = 390;
-  const margin = { top: 86, right: 42, bottom: 96, left: 92 };
+  const margin = { top: 58, right: 42, bottom: 76, left: 70 };
   const plotW = width - margin.left - margin.right;
   const plotH = height - margin.top - margin.bottom;
   const max = 8;
@@ -264,7 +264,7 @@ function svgDropoutChart(data, title) {
     .join("");
   return `
     <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(title)}">
-      <text class="chart-title" x="${margin.left}" y="48">${escapeHtml(title)}</text>
+      <text class="chart-title" x="${margin.left}" y="28">${escapeHtml(title)}</text>
       ${grid}
       ${data
         .map((d, idx) => {
@@ -286,7 +286,7 @@ function svgDropoutChart(data, title) {
 function svgStackedBarChart(data, title, categories, maxValue, isPercent = false) {
   const width = 720;
   const height = 390;
-  const margin = { top: 86, right: 28, bottom: 112, left: 92 };
+  const margin = { top: 58, right: 28, bottom: 82, left: 70 };
   const plotW = width - margin.left - margin.right;
   const plotH = height - margin.top - margin.bottom;
   const colors = {
@@ -342,7 +342,7 @@ function svgStackedBarChart(data, title, categories, maxValue, isPercent = false
     .join("");
   return `
     <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(title)}">
-      <text class="chart-title" x="${margin.left}" y="48">${escapeHtml(title)}</text>
+      <text class="chart-title" x="${margin.left}" y="28">${escapeHtml(title)}</text>
       ${grid}
       ${bars}
       ${legend}

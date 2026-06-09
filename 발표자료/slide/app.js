@@ -182,7 +182,7 @@ function chartShell(chartHtml, insight, question, accent = COLORS.red) {
 function svgLineChart(data, title) {
   const width = 720;
   const height = 390;
-  const margin = { top: 58, right: 44, bottom: 54, left: 64 };
+  const margin = { top: 86, right: 44, bottom: 72, left: 92 };
   const yMin = 330;
   const yMax = 580;
   const plotW = width - margin.left - margin.right;
@@ -200,7 +200,7 @@ function svgLineChart(data, title) {
     .join("");
   return `
     <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(title)}">
-      <text class="chart-title" x="${margin.left}" y="28">${escapeHtml(title)}</text>
+      <text class="chart-title" x="${margin.left}" y="48">${escapeHtml(title)}</text>
       ${grid}
       <line class="chart-axis" x1="${margin.left}" x2="${width - margin.right}" y1="${margin.top + plotH}" y2="${margin.top + plotH}" />
       <polyline points="${points}" fill="none" stroke="${COLORS.teal}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
@@ -220,14 +220,14 @@ function svgLineChart(data, title) {
 function svgHorizontalBarChart(data, title) {
   const width = 720;
   const height = 390;
-  const margin = { top: 58, right: 42, bottom: 28, left: 92 };
+  const margin = { top: 86, right: 42, bottom: 34, left: 150 };
   const plotW = width - margin.left - margin.right;
-  const barH = 38;
-  const gap = 18;
+  const barH = 40;
+  const gap = 16;
   const max = Math.max(...data.map((d) => d.total));
   return `
     <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(title)}">
-      <text class="chart-title" x="${margin.left}" y="28">${escapeHtml(title)}</text>
+      <text class="chart-title" x="${margin.left}" y="48">${escapeHtml(title)}</text>
       ${data
         .map((d, idx) => {
           const y = margin.top + idx * (barH + gap);
@@ -246,7 +246,7 @@ function svgHorizontalBarChart(data, title) {
 function svgDropoutChart(data, title) {
   const width = 720;
   const height = 390;
-  const margin = { top: 58, right: 42, bottom: 76, left: 64 };
+  const margin = { top: 86, right: 42, bottom: 96, left: 92 };
   const plotW = width - margin.left - margin.right;
   const plotH = height - margin.top - margin.bottom;
   const max = 8;
@@ -264,7 +264,7 @@ function svgDropoutChart(data, title) {
     .join("");
   return `
     <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(title)}">
-      <text class="chart-title" x="${margin.left}" y="28">${escapeHtml(title)}</text>
+      <text class="chart-title" x="${margin.left}" y="48">${escapeHtml(title)}</text>
       ${grid}
       ${data
         .map((d, idx) => {
@@ -286,7 +286,7 @@ function svgDropoutChart(data, title) {
 function svgStackedBarChart(data, title, categories, maxValue, isPercent = false) {
   const width = 720;
   const height = 390;
-  const margin = { top: 58, right: 28, bottom: 78, left: 64 };
+  const margin = { top: 86, right: 28, bottom: 112, left: 92 };
   const plotW = width - margin.left - margin.right;
   const plotH = height - margin.top - margin.bottom;
   const colors = {
@@ -342,7 +342,7 @@ function svgStackedBarChart(data, title, categories, maxValue, isPercent = false
     .join("");
   return `
     <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(title)}">
-      <text class="chart-title" x="${margin.left}" y="28">${escapeHtml(title)}</text>
+      <text class="chart-title" x="${margin.left}" y="48">${escapeHtml(title)}</text>
       ${grid}
       ${bars}
       ${legend}
@@ -828,7 +828,7 @@ const slides = [
     subtitle: "오늘의 핵심은 도구가 아니라 작업 방식입니다.",
     body: `
       <div style="display:grid;place-items:center;height:58%;text-align:center">
-        <h2 style="max-width:980px;margin:0;font-size:38px;line-height:1.38">
+        <h2 style="max-width:1080px;margin:0;font-size:64px;line-height:1.18">
           AI 에이전트 활용 능력은<br />
           '분석해줘'라고 말하는 능력이 아니라,<br />
           자료를 확인시키고, 이상한 점을 찾게 하고,<br />
@@ -899,7 +899,7 @@ const slides = [
     subtitle: "워크숍 시작 전에 짧게 읽어도 좋습니다.",
     body: `
       <div style="display:grid;place-items:center;height:70%;text-align:center">
-        <p style="max-width:980px;margin:0;font-size:28px;line-height:1.55;font-weight:800">
+        <p style="max-width:1080px;margin:0;font-size:48px;line-height:1.28;font-weight:800">
           오늘 실습에서는 공개 가능한 예제 데이터만 사용합니다.<br />
           학생 개인을 식별할 수 있는 이름, 학번, 연락처, 개별 성적,<br />
           상담 내용, 민감 설문 응답은 익명화 전에는 AI 도구에 입력하지 않습니다.<br /><br />

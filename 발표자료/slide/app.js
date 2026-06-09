@@ -396,7 +396,7 @@ const slides = [
       ["시간", "세션", "진행 내용", "참가자 결과"],
       [
         ["00:00-00:10", "문제 설정", "AI 에이전트 작업 흐름 소개", "오늘 다룰 자료 이해"],
-        ["00:10-00:50", "Codex 설치/접속", "로그인, 폴더 열기, 권한 설명", "작업 폴더 연결"],
+        ["00:10-00:50", "GitHub/Codex 준비", "GitHub 가입, Codex 접속, 권한 설명", "계정 로그인과 작업 폴더 연결"],
         ["00:50-01:00", "첫 프롬프트", "파일 목록 파악 시연", "데이터 목록 요약"],
         ["01:00-02:00", "데이터 분석", "정제, 차트, 검증 프롬프트", "핵심 인사이트 1개"],
         ["02:00-03:00", "웹 발표자료 제작", "분석 결과를 웹 슬라이드로 전환", "웹 발표자료 초안"],
@@ -412,12 +412,31 @@ const slides = [
     body: `
       <div class="grid grid--3">
         ${card("파일", "data 폴더가 참가자 PC에 내려받아졌는지 확인\n파일명 한글/공백이 그대로 유지되는지 확인\n데모용 백업 폴더를 준비")}
-        ${card("환경", "OpenAI 계정 로그인 확인\n기관 네트워크 접속 제한 확인\n설치가 어려운 참가자를 위한 짝 실습 준비", COLORS.gold)}
+        ${card("환경", "GitHub 계정 또는 가입용 이메일 확인\nOpenAI 계정 로그인 확인\n기관 네트워크 접속 제한 확인", COLORS.gold)}
         ${card("진행", "프롬프트 카드 열어두기\n결과가 다르게 나올 때 보여줄 기준 수치 준비\n개인정보 자료 입력 금지 원칙 안내", COLORS.red)}
       </div>
       <div style="margin-top:28px">${bullets(["설치가 안 된 참가자는 관찰자가 아니라 검증자 역할로 함께 참여합니다.", "정답을 바로 맞히는 것보다 확인 질문을 어떻게 이어가는지가 더 중요합니다.", "AI가 한 번에 못 읽는 상황은 실패가 아니라 좋은 실습 장면으로 다룹니다."])}</div>
     `,
     notes: "이 슬라이드는 실제 발표에서는 빠르게 넘기고, 진행 준비용 체크리스트로 활용하면 됩니다.",
+  },
+  {
+    section: "설치",
+    title: "GitHub 계정부터 준비합니다",
+    subtitle: "GitHub를 처음 쓰는 참가자도 가입과 이메일 인증까지 진행할 수 있게 안내합니다.",
+    body: `
+      ${timeline([
+        { title: "1 접속", subtitle: "github.com/signup" },
+        { title: "2 입력", subtitle: "이메일/비밀번호/사용자명" },
+        { title: "3 지역", subtitle: "Country/Region" },
+        { title: "4 생성", subtitle: "Create account" },
+        { title: "5 인증", subtitle: "이메일 확인" },
+      ])}
+      <div class="grid grid--2" style="margin-top:30px">
+        ${card("GitHub가 필요한 이유", "GitHub는 파일을 저장하고 변경 기록을 남기는 웹 서비스입니다. 오늘은 완성한 HTML 발표자료를 GitHub Pages 링크로 배포할 때 사용합니다.", COLORS.blue)}
+        ${card("현장 안내", "사용자명은 공개 주소에 들어갑니다.\n오늘 실습은 유료 결제가 필요 없습니다.\n인증 메일이 안 보이면 스팸함과 기관 메일 차단을 확인합니다.", COLORS.red)}
+      </div>
+    `,
+    notes: "GitHub를 모르는 참가자에게는 '자료를 올려두고 링크로 나누는 공간' 정도로 설명하면 충분합니다. 가입 화면 문구는 바뀔 수 있으니 주소와 이메일 인증만 분명히 잡습니다.",
   },
   {
     section: "설치",
@@ -720,18 +739,18 @@ const slides = [
     subtitle: "정적 HTML은 빌드 없이 GitHub Pages에서 바로 열 수 있습니다.",
     body: `
       ${timeline([
-        { title: "1 폴더", subtitle: "발표자료/slide" },
-        { title: "2 파일", subtitle: "index.html, CSS, JS" },
-        { title: "3 커밋", subtitle: "GitHub에 push" },
-        { title: "4 Pages", subtitle: "Actions 배포 확인" },
-        { title: "5 공유", subtitle: "열리는 링크 공유" },
+        { title: "1 계정", subtitle: "GitHub 로그인" },
+        { title: "2 폴더", subtitle: "발표자료/slide" },
+        { title: "3 파일", subtitle: "index.html, CSS, JS" },
+        { title: "4 커밋", subtitle: "GitHub에 push" },
+        { title: "5 공유", subtitle: "Pages 링크 확인" },
       ])}
       <div class="grid grid--2" style="margin-top:30px">
         ${card("예상 접속 경로", "https://<github-id>.github.io/workshop-hansung/", COLORS.blue)}
-        ${card("공유할 때 주의", "GitHub Actions로 slide 폴더만 배포하면 루트 주소로 열립니다. 공유 전에는 실제 열리는 주소를 한 번 눌러보고 전달합니다.", COLORS.gold)}
+        ${card("공유할 때 주의", "GitHub 계정에 로그인되어 있어야 저장소에 push할 수 있습니다. 공유 전에는 실제 열리는 주소를 한 번 눌러보고 전달합니다.", COLORS.gold)}
       </div>
     `,
-    notes: "GitHub Pages는 저장소 Settings에서 Source를 GitHub Actions로 지정해 둡니다. 수업 중에는 데모만 보여주고, 참가자는 사후 과제로 해도 됩니다.",
+    notes: "GitHub 계정이 없는 참가자는 앞에서 만든 계정을 사용합니다. Pages 설정은 저장소 Settings에서 Source를 GitHub Actions로 지정해 둡니다.",
   },
   {
     section: "제작",
@@ -1087,6 +1106,7 @@ function copyTextFallback(text) {
   textarea.style.left = "-9999px";
   textarea.style.top = "0";
   document.body.append(textarea);
+  textarea.focus();
   textarea.select();
   textarea.setSelectionRange(0, textarea.value.length);
   let copied = false;
@@ -1107,6 +1127,21 @@ function showCopyStatus(button, label) {
   }, 1200);
 }
 
+function selectPromptText(button) {
+  const promptText = button.closest(".prompt")?.querySelector(".prompt__text");
+  const selection = window.getSelection?.();
+  if (!promptText || !selection) return false;
+  const range = document.createRange();
+  range.selectNodeContents(promptText);
+  selection.removeAllRanges();
+  selection.addRange(range);
+  return true;
+}
+
+function showCopyFallback(button) {
+  showCopyStatus(button, selectPromptText(button) ? "직접 복사" : "복사 실패");
+}
+
 stage.addEventListener("click", (event) => {
   const button = event.target.closest(".prompt__copy");
   if (!button) return;
@@ -1116,13 +1151,13 @@ stage.addEventListener("click", (event) => {
     return;
   }
   if (!navigator.clipboard?.writeText) {
-    showCopyStatus(button, "복사 실패");
+    showCopyFallback(button);
     return;
   }
   navigator.clipboard
     .writeText(text)
     .then(() => showCopyStatus(button, "복사됨"))
-    .catch(() => showCopyStatus(button, "복사 실패"));
+    .catch(() => showCopyFallback(button));
 });
 
 overviewList.addEventListener("click", (event) => {

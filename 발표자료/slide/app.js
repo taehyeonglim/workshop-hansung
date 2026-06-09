@@ -828,7 +828,7 @@ const slides = [
     subtitle: "오늘의 핵심은 도구가 아니라 작업 방식입니다.",
     body: `
       <div style="display:grid;place-items:center;height:58%;text-align:center">
-        <h2 style="max-width:1080px;margin:0;font-size:64px;line-height:1.18">
+        <h2 style="max-width:1080px;margin:0;font-size:42px;line-height:1.25">
           AI 에이전트 활용 능력은<br />
           '분석해줘'라고 말하는 능력이 아니라,<br />
           자료를 확인시키고, 이상한 점을 찾게 하고,<br />
@@ -899,7 +899,7 @@ const slides = [
     subtitle: "워크숍 시작 전에 짧게 읽어도 좋습니다.",
     body: `
       <div style="display:grid;place-items:center;height:70%;text-align:center">
-        <p style="max-width:1080px;margin:0;font-size:48px;line-height:1.28;font-weight:800">
+        <p style="max-width:1080px;margin:0;font-size:30px;line-height:1.38;font-weight:800">
           오늘 실습에서는 공개 가능한 예제 데이터만 사용합니다.<br />
           학생 개인을 식별할 수 있는 이름, 학번, 연락처, 개별 성적,<br />
           상담 내용, 민감 설문 응답은 익명화 전에는 AI 도구에 입력하지 않습니다.<br /><br />

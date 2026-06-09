@@ -16,10 +16,10 @@
   --soft-red: #fbecec;
   --shadow: 0 20px 70px rgba(24, 33, 47, 0.18);
   --radius: 8px;
-  --type-min: 36px;
-  --type-small: 32px;
-  --type-title: 72px;
-  --type-section: 82px;
+  --type-min: 22px;
+  --type-small: 15px;
+  --type-title: 44px;
+  --type-section: 58px;
   font-family: "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
 }
 
@@ -49,12 +49,12 @@ button {
   place-items: center;
   width: 100vw;
   height: 100vh;
-  padding: 12px 12px 82px;
+  padding: 22px 22px 78px;
 }
 
 .stage {
   position: relative;
-  width: min(100%, calc((100vh - 104px) * 16 / 9));
+  width: min(100%, calc((100vh - 118px) * 16 / 9));
   aspect-ratio: 16 / 9;
   background: var(--paper);
   border-radius: 10px;
@@ -67,8 +67,8 @@ button {
   inset: 0;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  gap: 28px;
-  padding: 54px 64px 40px;
+  gap: 20px;
+  padding: 42px 56px 34px;
   background: var(--paper);
   font-size: var(--type-min);
 }
@@ -106,7 +106,7 @@ button {
 
 .slide__header {
   display: grid;
-  gap: 18px;
+  gap: 10px;
 }
 
 .slide__section {
@@ -114,9 +114,9 @@ button {
   align-items: center;
   justify-content: center;
   width: fit-content;
-  min-width: 132px;
-  min-height: 54px;
-  padding: 8px 24px;
+  min-width: 86px;
+  min-height: 30px;
+  padding: 4px 14px;
   border-radius: 999px;
   background: var(--ink);
   color: white;
@@ -129,7 +129,7 @@ button {
   margin: 0;
   color: var(--ink);
   font-size: var(--type-title);
-  line-height: 1.1;
+  line-height: 1.14;
   font-weight: 800;
 }
 
@@ -138,7 +138,7 @@ button {
   margin: 0;
   color: var(--muted);
   font-size: var(--type-min);
-  line-height: 1.35;
+  line-height: 1.42;
 }
 
 .slide--cover .slide__title,
@@ -151,7 +151,7 @@ button {
 .slide__body {
   min-height: 0;
   overflow: auto;
-  padding-right: 10px;
+  padding-right: 6px;
   scrollbar-color: var(--teal) transparent;
   scrollbar-width: thin;
 }
@@ -161,9 +161,9 @@ button {
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid rgba(93, 104, 118, 0.28);
-  padding-top: 12px;
+  padding-top: 8px;
   color: var(--muted);
-  font-size: 36px;
+  font-size: 11px;
 }
 
 .slide--cover .slide__footer,
@@ -175,31 +175,31 @@ button {
 .cover-layout {
   display: grid;
   grid-template-columns: 1.35fr 0.95fr;
-  gap: 56px;
+  gap: 44px;
   align-items: center;
   height: 100%;
 }
 
 .cover-kicker {
-  margin-bottom: 34px;
+  margin-bottom: 24px;
   color: #c8d3df;
-  font-size: 40px;
+  font-size: 22px;
   font-weight: 700;
 }
 
 .cover-title {
   margin: 0;
   color: white;
-  font-size: 92px;
-  line-height: 1.04;
+  font-size: 66px;
+  line-height: 1.06;
   font-weight: 900;
 }
 
 .cover-subtitle {
-  margin: 34px 0 0;
+  margin: 26px 0 0;
   color: #dce8ef;
-  font-size: 38px;
-  line-height: 1.35;
+  font-size: 23px;
+  line-height: 1.42;
 }
 
 .cover-card {
@@ -215,7 +215,7 @@ button {
 
 .section-number {
   color: rgba(255, 255, 255, 0.78);
-  font-size: 42px;
+  font-size: 26px;
   font-weight: 800;
 }
 
@@ -224,20 +224,20 @@ button {
   margin: 28px 0 16px;
   color: white;
   font-size: var(--type-section);
-  line-height: 1.08;
+  line-height: 1.12;
   font-weight: 900;
 }
 
 .section-subtitle {
   max-width: 860px;
   color: rgba(255, 255, 255, 0.86);
-  font-size: 40px;
-  line-height: 1.35;
+  font-size: 24px;
+  line-height: 1.42;
 }
 
 .grid {
   display: grid;
-  gap: 28px;
+  gap: 20px;
 }
 
 .grid--2 {
@@ -245,7 +245,7 @@ button {
 }
 
 .grid--3 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .grid--4 {
@@ -253,13 +253,13 @@ button {
 }
 
 .grid--5 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .card {
   position: relative;
-  min-height: 190px;
-  padding: 34px 34px 34px 48px;
+  min-height: 116px;
+  padding: 22px 22px 22px 32px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--panel);
@@ -271,7 +271,7 @@ button {
   top: 0;
   bottom: 0;
   left: 0;
-  width: 12px;
+  width: 8px;
   content: "";
   background: var(--accent, var(--teal));
 }
@@ -287,10 +287,10 @@ button {
 }
 
 .card__title {
-  margin: 0 0 18px;
+  margin: 0 0 12px;
   color: inherit;
-  font-size: 44px;
-  line-height: 1.18;
+  font-size: 25px;
+  line-height: 1.22;
   font-weight: 800;
 }
 
@@ -298,20 +298,20 @@ button {
   margin: 0;
   color: var(--muted);
   font-size: var(--type-min);
-  line-height: 1.34;
+  line-height: 1.42;
   white-space: pre-line;
 }
 
 .metric-row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
 }
 
 .metric {
   display: grid;
   place-items: center;
-  min-height: 220px;
+  min-height: 126px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: white;
@@ -319,13 +319,13 @@ button {
 
 .metric__value {
   color: var(--accent, var(--teal));
-  font-size: 82px;
+  font-size: 42px;
   line-height: 1;
   font-weight: 900;
 }
 
 .metric__label {
-  margin-top: 18px;
+  margin-top: 10px;
   color: var(--muted);
   font-size: var(--type-min);
   text-align: center;
@@ -334,13 +334,13 @@ button {
 .timeline {
   display: grid;
   grid-template-columns: repeat(var(--count, 4), minmax(0, 1fr));
-  gap: 22px;
+  gap: 10px;
 }
 
 .timeline__step {
   position: relative;
-  min-height: 170px;
-  padding: 30px 20px;
+  min-height: 98px;
+  padding: 18px 12px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: white;
@@ -349,8 +349,8 @@ button {
 
 .timeline__step:not(:last-child)::after {
   position: absolute;
-  top: 64px;
-  right: -22px;
+  top: 38px;
+  right: -14px;
   z-index: 2;
   content: "→";
   color: var(--teal);
@@ -358,20 +358,20 @@ button {
 }
 
 .timeline__title {
-  font-size: 40px;
+  font-size: 21px;
   font-weight: 800;
 }
 
 .timeline__subtitle {
-  margin-top: 16px;
+  margin-top: 8px;
   color: var(--muted);
-  font-size: 30px;
-  line-height: 1.25;
+  font-size: 15px;
+  line-height: 1.28;
 }
 
 .prompt {
   position: relative;
-  padding: 34px 34px 30px;
+  padding: 22px 22px 20px;
   border-radius: var(--radius);
   background: #111827;
   color: white;
@@ -379,9 +379,9 @@ button {
 }
 
 .prompt__label {
-  margin-bottom: 24px;
+  margin-bottom: 14px;
   color: #9fe7f0;
-  font-size: 32px;
+  font-size: 15px;
   font-weight: 800;
 }
 
@@ -390,21 +390,21 @@ button {
   color: white;
   font-family: inherit;
   font-size: var(--type-min);
-  line-height: 1.34;
+  line-height: 1.4;
   white-space: pre-wrap;
 }
 
 .prompt__copy {
   position: absolute;
-  top: 22px;
-  right: 22px;
-  min-width: 96px;
-  height: 52px;
+  top: 14px;
+  right: 14px;
+  min-width: 62px;
+  height: 32px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   color: white;
-  font-size: 32px;
+  font-size: 13px;
   cursor: pointer;
 }
 
@@ -428,13 +428,13 @@ button {
 
 .table th,
 .table td {
-  padding: 20px 24px;
+  padding: 12px 14px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   text-align: left;
   vertical-align: top;
   font-size: var(--type-min);
-  line-height: 1.28;
+  line-height: 1.34;
 }
 
 .table th {
@@ -455,14 +455,14 @@ button {
 .chart-layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 34px;
+  gap: 20px;
   align-items: center;
   height: 100%;
 }
 
 .chart-card {
-  min-height: 560px;
-  padding: 28px;
+  min-height: 390px;
+  padding: 20px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: white;
@@ -476,12 +476,12 @@ button {
 
 .insight-stack {
   display: grid;
-  gap: 28px;
+  gap: 20px;
 }
 
 .bullets {
   display: grid;
-  gap: 28px;
+  gap: 14px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -489,37 +489,37 @@ button {
 
 .bullets li {
   position: relative;
-  padding-left: 40px;
+  padding-left: 26px;
   color: var(--ink);
   font-size: var(--type-min);
-  line-height: 1.34;
+  line-height: 1.42;
 }
 
 .bullets li::before {
   position: absolute;
-  top: 18px;
+  top: 12px;
   left: 0;
-  width: 16px;
-  height: 16px;
+  width: 10px;
+  height: 10px;
   border-radius: 999px;
   content: "";
   background: var(--teal);
 }
 
 .note-strip {
-  padding: 22px 28px;
+  padding: 14px 18px;
   border: 1px solid #f0d891;
   border-radius: var(--radius);
   background: var(--soft-gold);
   color: var(--ink);
   font-size: var(--type-min);
-  line-height: 1.34;
+  line-height: 1.4;
 }
 
 .two-column {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 34px;
+  gap: 24px;
   align-items: start;
 }
 
@@ -532,7 +532,7 @@ button {
   align-items: center;
   gap: 14px;
   transform: translateX(-50%);
-  padding: 10px 12px;
+  padding: 8px;
   border: 1px solid rgba(216, 221, 229, 0.8);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.9);
@@ -547,12 +547,12 @@ button {
 }
 
 .control-button {
-  height: 48px;
-  padding: 0 22px;
+  height: 34px;
+  padding: 0 15px;
   border-radius: 999px;
   background: var(--ink);
   color: white;
-  font-size: 30px;
+  font-size: 12px;
   font-weight: 800;
 }
 
@@ -568,16 +568,16 @@ button {
 
 .slide-meter {
   display: grid;
-  gap: 8px;
-  min-width: 160px;
+  gap: 5px;
+  min-width: 110px;
   color: var(--muted);
-  font-size: 30px;
+  font-size: 11px;
   text-align: center;
 }
 
 .progress-track {
-  width: 160px;
-  height: 8px;
+  width: 110px;
+  height: 4px;
   border-radius: 99px;
   background: #e1e7ed;
   overflow: hidden;
@@ -597,7 +597,7 @@ button {
   top: 18px;
   right: 18px;
   z-index: 30;
-  width: min(820px, calc(100vw - 36px));
+  width: min(520px, calc(100vw - 36px));
   max-height: calc(100vh - 120px);
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -624,59 +624,59 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 82px;
-  padding: 0 24px 0 30px;
+  height: 54px;
+  padding: 0 16px 0 20px;
   border-bottom: 1px solid var(--line);
   background: #f9fafb;
-  font-size: 30px;
+  font-size: 17px;
   font-weight: 900;
 }
 
 .icon-button {
   display: grid;
   place-items: center;
-  width: 50px;
-  height: 50px;
+  width: 32px;
+  height: 32px;
   border-radius: 999px;
   background: #edf1f5;
   color: var(--ink);
-  font-size: 36px;
+  font-size: 22px;
   line-height: 1;
 }
 
 .notes-panel__body {
   display: grid;
-  gap: 22px;
-  max-height: calc(100vh - 202px);
-  padding: 28px;
+  gap: 14px;
+  max-height: calc(100vh - 174px);
+  padding: 20px;
   overflow: auto;
 }
 
 .note-block {
-  padding: 28px;
+  padding: 18px;
   border-radius: var(--radius);
   background: var(--soft-gold);
   color: var(--ink);
-  font-size: var(--type-min);
-  line-height: 1.34;
+  font-size: 20px;
+  line-height: 1.42;
   white-space: pre-line;
 }
 
 .overview-list {
   display: grid;
-  gap: 14px;
-  max-height: calc(100vh - 202px);
-  padding: 24px;
+  gap: 10px;
+  max-height: calc(100vh - 174px);
+  padding: 16px;
   overflow: auto;
 }
 
 .overview-item {
   display: grid;
-  grid-template-columns: 76px 1fr;
-  gap: 18px;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
   align-items: center;
   width: 100%;
-  min-height: 82px;
+  min-height: 54px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: white;
@@ -693,35 +693,35 @@ button {
 .overview-item__num {
   display: grid;
   place-items: center;
-  width: 76px;
+  width: 42px;
   height: 100%;
   border-radius: var(--radius) 0 0 var(--radius);
   background: #eef2f5;
   color: var(--muted);
-  font-size: 32px;
+  font-size: 13px;
   font-weight: 800;
 }
 
 .overview-item__title {
-  padding: 16px 18px 16px 0;
-  font-size: 34px;
-  line-height: 1.25;
+  padding: 10px 12px 10px 0;
+  font-size: 15px;
+  line-height: 1.32;
 }
 
 .chart-title {
   fill: var(--ink);
-  font-size: 42px;
+  font-size: 24px;
   font-weight: 800;
 }
 
 .chart-label {
   fill: var(--muted);
-  font-size: 32px;
+  font-size: 16px;
 }
 
 .chart-value {
   fill: var(--ink);
-  font-size: 32px;
+  font-size: 18px;
   font-weight: 800;
 }
 
@@ -786,16 +786,16 @@ body.printing .overview-panel {
   }
 
   .slide {
-    padding: 36px;
-    gap: 22px;
+    padding: 28px;
+    gap: 16px;
   }
 
   .slide__title {
-    font-size: 56px;
+    font-size: 34px;
   }
 
   .slide__subtitle {
-    font-size: 34px;
+    font-size: 20px;
   }
 
   .grid--3,
@@ -809,7 +809,7 @@ body.printing .overview-panel {
   }
 
   .cover-title {
-    font-size: 66px;
+    font-size: 44px;
   }
 
   .cover-card {
@@ -821,13 +821,13 @@ body.printing .overview-panel {
   }
 
   .card__title {
-    font-size: 40px;
+    font-size: 24px;
   }
 
   .card__body,
   .prompt__text,
   .bullets li {
-    font-size: 34px;
+    font-size: 20px;
   }
 
   .controls {

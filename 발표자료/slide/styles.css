@@ -16,9 +16,9 @@
   --soft-red: #fbecec;
   --shadow: 0 20px 70px rgba(24, 33, 47, 0.18);
   --radius: 8px;
-  --type-min: 19px;
+  --type-min: 21px;
   --type-small: 14px;
-  --type-title: 40px;
+  --type-title: 42px;
   --type-section: 56px;
   font-family: "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
 }
@@ -170,11 +170,13 @@ button {
 
   .slide__body:has(> .grid:first-child:nth-last-child(2)),
   .slide__body:has(> .metric-row:first-child:nth-last-child(2)) {
-    grid-template-rows: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    align-content: space-between;
   }
 
   .slide__body:has(> .timeline:first-child:nth-last-child(2)) {
-    grid-template-rows: minmax(96px, 0.72fr) minmax(0, 1.28fr);
+    grid-template-rows: auto auto;
+    align-content: space-between;
   }
 
   .slide__body:has(> .timeline:first-child + .screenshot-layout--signup) {
@@ -189,9 +191,6 @@ button {
     grid-template-rows: minmax(0, 1fr) auto;
   }
 
-  .slide__body > .grid:only-child,
-  .slide__body > .metric-row:only-child,
-  .slide__body > .timeline:only-child,
   .slide__body > .table:only-child,
   .slide__body > .prompt:only-child,
   .slide__body > div:only-child > .prompt {
@@ -201,27 +200,21 @@ button {
 
   .slide__body > .grid,
   .slide__body > .metric-row,
-  .slide__body > .timeline,
+  .slide__body > .timeline {
+    align-items: start;
+    align-self: start;
+    min-height: 0;
+  }
+
   .slide__body > .screenshot-layout {
     align-items: stretch;
     min-height: 0;
   }
 
-  .slide__body > .grid {
-    grid-auto-rows: minmax(0, 1fr);
-  }
-
-  .slide__body > .grid > .card,
-  .slide__body > .metric-row > .metric,
-  .slide__body > .timeline > .timeline__step {
-    height: 100%;
-  }
-
   .slide__body > .grid > .card,
   .slide__body > .timeline > .timeline__step,
   .slide__body > .metric-row > .metric {
-    display: grid;
-    align-content: center;
+    display: block;
   }
 
   .slide__body > div:last-child > .bullets {
@@ -244,6 +237,67 @@ button {
   .codex-guide-cards {
     align-content: stretch;
     grid-auto-rows: minmax(0, 1fr);
+  }
+
+  .slide__body:has(> .timeline:first-child + .grid) {
+    gap: 20px;
+  }
+
+  .slide__body:has(> .timeline:first-child + .grid) .timeline__step {
+    min-height: 92px;
+    padding: 13px 10px;
+  }
+
+  .slide__body:has(> .timeline:first-child + .grid) .timeline__title {
+    font-size: 20px;
+  }
+
+  .slide__body:has(> .timeline:first-child + .grid) .timeline__subtitle {
+    font-size: 15px;
+  }
+
+  .slide__body:has(> .timeline:first-child + .grid) .card,
+  .slide__body > .grid:has(> .card:nth-child(5)) .card,
+  .chart-layout .card,
+  .chart-layout .prompt {
+    min-height: 0;
+    padding: 18px 18px 18px 26px;
+  }
+
+  .slide__body:has(> .timeline:first-child + .grid) .card__title,
+  .slide__body > .grid:has(> .card:nth-child(5)) .card__title,
+  .chart-layout .card__title {
+    font-size: 23px;
+  }
+
+  .slide__body:has(> .timeline:first-child + .grid) .card__body,
+  .slide__body > .grid:has(> .card:nth-child(5)) .card__body,
+  .chart-layout .card__body {
+    font-size: 19px;
+    line-height: 1.28;
+  }
+
+  .slide__body > .grid:has(> .card:nth-child(5)) {
+    gap: 14px;
+  }
+
+  .slide__body:has(> .grid:first-child + .grid:last-child) {
+    gap: 16px;
+    align-content: space-between;
+  }
+
+  .slide__body:has(> .grid:first-child + .grid:last-child) .card {
+    min-height: 0;
+    padding: 16px 16px 16px 24px;
+  }
+
+  .slide__body:has(> .grid:first-child + .grid:last-child) .card__title {
+    font-size: 21px;
+  }
+
+  .slide__body:has(> .grid:first-child + .grid:last-child) .card__body {
+    font-size: 18px;
+    line-height: 1.26;
   }
 }
 
@@ -358,8 +412,8 @@ button {
 
 .card {
   position: relative;
-  min-height: 116px;
-  padding: 20px 20px 20px 30px;
+  min-height: 132px;
+  padding: 22px 22px 22px 32px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--panel);
@@ -389,7 +443,7 @@ button {
 .card__title {
   margin: 0 0 12px;
   color: inherit;
-  font-size: 22px;
+  font-size: 26px;
   line-height: 1.22;
   font-weight: 800;
 }
@@ -398,8 +452,24 @@ button {
   margin: 0;
   color: var(--muted);
   font-size: var(--type-min);
-  line-height: 1.36;
+  line-height: 1.33;
   white-space: pre-line;
+}
+
+.grid--4 .card,
+.grid--5 .card {
+  padding: 20px 18px 20px 28px;
+}
+
+.grid--4 .card__title,
+.grid--5 .card__title {
+  font-size: 23px;
+}
+
+.grid--4 .card__body,
+.grid--5 .card__body {
+  font-size: 19px;
+  line-height: 1.3;
 }
 
 .metric-row {
@@ -419,7 +489,7 @@ button {
 
 .metric__value {
   color: var(--accent, var(--teal));
-  font-size: 36px;
+  font-size: 42px;
   line-height: 1;
   font-weight: 900;
 }
@@ -427,7 +497,7 @@ button {
 .metric__label {
   margin-top: 10px;
   color: var(--muted);
-  font-size: 16px;
+  font-size: 19px;
   text-align: center;
 }
 
@@ -458,15 +528,15 @@ button {
 }
 
 .timeline__title {
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 800;
 }
 
 .timeline__subtitle {
   margin-top: 8px;
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.28;
+  font-size: 16px;
+  line-height: 1.3;
 }
 
 .prompt {
@@ -489,7 +559,7 @@ button {
   margin: 0;
   color: white;
   font-family: inherit;
-  font-size: 18px;
+  font-size: 19px;
   line-height: 1.4;
   white-space: pre-wrap;
 }
@@ -853,7 +923,7 @@ button {
   position: relative;
   padding-left: 26px;
   color: var(--ink);
-  font-size: var(--type-min);
+  font-size: 22px;
   line-height: 1.36;
 }
 
@@ -874,7 +944,7 @@ button {
   border-radius: var(--radius);
   background: var(--soft-gold);
   color: var(--ink);
-  font-size: var(--type-min);
+  font-size: 22px;
   line-height: 1.4;
 }
 

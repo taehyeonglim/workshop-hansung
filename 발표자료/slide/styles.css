@@ -417,6 +417,7 @@ button {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--panel);
+  text-align: left;
   overflow: visible;
 }
 
@@ -449,11 +450,31 @@ button {
 }
 
 .card__body {
+  display: grid;
+  gap: 7px;
   margin: 0;
+  padding: 0;
+  list-style: none;
   color: var(--muted);
   font-size: var(--type-min);
   line-height: 1.33;
-  white-space: pre-line;
+  text-align: left;
+}
+
+.card__body li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.card__body li::before {
+  position: absolute;
+  top: 0.62em;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  content: "";
+  background: var(--accent, var(--teal));
 }
 
 .grid--4 .card,
@@ -1315,14 +1336,14 @@ body.printing .overview-panel {
     font-size: var(--type-title);
     line-height: 1.14;
     overflow-wrap: anywhere;
-    word-break: keep-all;
+    word-break: break-all;
   }
 
   .slide__subtitle {
     font-size: 15px;
     line-height: 1.35;
     overflow-wrap: anywhere;
-    word-break: keep-all;
+    word-break: break-all;
   }
 
   .slide__body,
@@ -1477,13 +1498,20 @@ body.printing .overview-panel {
   .card__title {
     margin-bottom: 8px;
     font-size: 17px;
+    overflow-wrap: anywhere;
+    word-break: break-all;
   }
 
   .card__body,
+  .card__body li,
+  .note-strip,
   .prompt__text,
+  .table th,
+  .table td,
   .bullets li {
     font-size: var(--type-min);
     overflow-wrap: anywhere;
+    word-break: break-all;
   }
 
   .card {

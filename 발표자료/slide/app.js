@@ -103,11 +103,187 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+const DISPLAY_ENDINGS = [
+  [/확인하겠습니다\.?$/, "확인"],
+  [/해야 합니다\.?$/, "필요"],
+  [/할 수 있습니다\.?$/, "가능"],
+  [/수 있습니다\.?$/, "가능"],
+  [/하지 않습니다\.?$/, "하지 않음"],
+  [/지 않습니다\.?$/, "지 않음"],
+  [/않습니다\.?$/, "않음"],
+  [/입니다\.?$/, ""],
+  [/합니다\.?$/, ""],
+  [/됩니다\.?$/, "됨"],
+  [/봅니다\.?$/, "보기"],
+  [/둡니다\.?$/, "두기"],
+  [/남깁니다\.?$/, "남기기"],
+  [/만듭니다\.?$/, "만들기"],
+  [/나눕니다\.?$/, "나누기"],
+  [/엽니다\.?$/, "열기"],
+  [/읽습니다\.?$/, "읽기"],
+  [/씁니다\.?$/, "쓰기"],
+  [/받습니다\.?$/, "받기"],
+  [/잡습니다\.?$/, "잡기"],
+  [/묻습니다\.?$/, "묻기"],
+  [/졌습니다\.?$/, "짐"],
+  [/있습니다\.?$/, "있음"],
+  [/없습니다\.?$/, "없음"],
+  [/좋습니다\.?$/, "좋음"],
+  [/큽니다\.?$/, "큼"],
+  [/습니다\.?$/, "음"],
+];
+
+const COMPACT_PHRASES = [
+  [/확인하겠습니다/g, "확인"],
+  [/확인했습니다/g, "확인"],
+  [/증가했습니다/g, "증가"],
+  [/달라졌습니다/g, "달라짐"],
+  [/시작됩니다/g, "시작"],
+  [/기록됩니다/g, "기록"],
+  [/놓입니다/g, "놓임"],
+  [/안정됩니다/g, "안정"],
+  [/가능합니다/g, "가능"],
+  [/필요합니다/g, "필요"],
+  [/중요합니다/g, "중요"],
+  [/충분합니다/g, "충분"],
+  [/어렵습니다/g, "어려움"],
+  [/쉽습니다/g, "쉬움"],
+  [/많습니다/g, "많음"],
+  [/높습니다/g, "높음"],
+  [/낫습니다/g, "나음"],
+  [/맞습니다/g, "맞음"],
+  [/없습니다/g, "없음"],
+  [/있습니다/g, "있음"],
+  [/못합니다/g, "못함"],
+  [/않습니다/g, "않음"],
+  [/약합니다/g, "약함"],
+  [/느슨합니다/g, "느슨함"],
+  [/안전합니다/g, "안전"],
+  [/적당합니다/g, "적당"],
+  [/유용합니다/g, "유용"],
+  [/좋습니다/g, "좋음"],
+  [/고정합니다/g, "고정"],
+  [/관리합니다/g, "관리"],
+  [/구분합니다/g, "구분"],
+  [/긋습니다/g, "긋기"],
+  [/넣습니다/g, "넣기"],
+  [/논리입니다/g, "논리"],
+  [/말합니다/g, "말하기"],
+  [/만들어봅니다/g, "만들어보기"],
+  [/넘겨봅니다/g, "넘겨보기"],
+  [/눌러봅니다/g, "눌러보기"],
+  [/열어봅니다/g, "열어보기"],
+  [/묻습니다/g, "묻기"],
+  [/반복합니다/g, "반복"],
+  [/분리합니다/g, "분리"],
+  [/분석합니다/g, "분석"],
+  [/비교합니다/g, "비교"],
+  [/사용합니다/g, "사용"],
+  [/선택합니다/g, "선택"],
+  [/설계합니다/g, "설계"],
+  [/설명합니다/g, "설명"],
+  [/습관화합니다/g, "습관화"],
+  [/승인합니다/g, "승인"],
+  [/시작합니다/g, "시작"],
+  [/안내합니다/g, "안내"],
+  [/압축합니다/g, "압축"],
+  [/연결합니다/g, "연결"],
+  [/요구합니다/g, "요구"],
+  [/이해합니다/g, "이해"],
+  [/입력합니다/g, "입력"],
+  [/잡습니다/g, "잡기"],
+  [/전달합니다/g, "전달"],
+  [/전환합니다/g, "전환"],
+  [/정리합니다/g, "정리"],
+  [/정합니다/g, "정하기"],
+  [/제시합니다/g, "제시"],
+  [/준비합니다/g, "준비"],
+  [/줄입니다/g, "줄이기"],
+  [/지시합니다/g, "지시"],
+  [/지정합니다/g, "지정"],
+  [/진행합니다/g, "진행"],
+  [/짚습니다/g, "짚기"],
+  [/참여합니다/g, "참여"],
+  [/표시합니다/g, "표시"],
+  [/피드백합니다/g, "피드백"],
+  [/피합니다/g, "피하기"],
+  [/합의합니다/g, "합의"],
+  [/허용합니다/g, "허용"],
+  [/확장합니다/g, "확장"],
+  [/기준점입니다/g, "기준점"],
+  [/공간입니다/g, "공간"],
+  [/관리입니다/g, "관리"],
+  [/교육입니다/g, "교육"],
+  [/검증자입니다/g, "검증자"],
+  [/것입니다/g, "것"],
+  [/문장입니다/g, "문장"],
+  [/목표입니다/g, "목표"],
+  [/방식입니다/g, "방식"],
+  [/순서입니다/g, "순서"],
+  [/슬라이드입니다/g, "슬라이드"],
+  [/에이전트입니다/g, "에이전트"],
+  [/원칙입니다/g, "원칙"],
+  [/장면입니다/g, "장면"],
+  [/중심입니다/g, "중심"],
+  [/층위입니다/g, "층위"],
+  [/파일입니다/g, "파일"],
+  [/편집본입니다/g, "편집본"],
+  [/프롬프트입니다/g, "프롬프트"],
+  [/흐름입니다/g, "흐름"],
+  [/가지입니다/g, "가지"],
+  [/차트입니다/g, "차트"],
+  [/틀입니다/g, "틀"],
+];
+
+function compactLine(value) {
+  let text = String(value).replace(/\s+/g, " ").trim();
+  if (!text) return "";
+  for (const [pattern, replacement] of COMPACT_PHRASES) {
+    text = text.replace(pattern, replacement);
+  }
+  for (const [pattern, replacement] of DISPLAY_ENDINGS) {
+    text = text.replace(pattern, replacement);
+  }
+  return text.replace(/[.。]$/, "").trim();
+}
+
+function compactDisplayText(value) {
+  return String(value)
+    .split("\n")
+    .map((line) => compactLine(line))
+    .join("\n");
+}
+
+function cardBodyItems(body) {
+  return String(body)
+    .split(/\n+/)
+    .flatMap((line) => line.split(/(?<=[.!?])\s+/))
+    .map((line) => compactLine(line))
+    .filter(Boolean);
+}
+
+function compactPlainElement(element) {
+  element.childNodes.forEach((node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      node.nodeValue = compactDisplayText(node.nodeValue);
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      compactPlainElement(node);
+    }
+  });
+}
+
+function compactRenderedSlideText(root) {
+  root.querySelectorAll(".note-strip, .table th, .table td").forEach((element) => {
+    compactPlainElement(element);
+  });
+}
+
 function card(title, body, accent = COLORS.teal, dark = false) {
+  const items = cardBodyItems(body);
   return `
     <article class="card ${dark ? "card--dark" : ""}" style="--accent:${accent}">
-      <h3 class="card__title">${escapeHtml(title)}</h3>
-      <p class="card__body">${escapeHtml(body)}</p>
+      <h3 class="card__title">${escapeHtml(compactDisplayText(title))}</h3>
+      <ul class="card__body">${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
     </article>
   `;
 }
@@ -134,7 +310,7 @@ function promptBox(label, text) {
 }
 
 function bullets(items) {
-  return `<ul class="bullets">${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
+  return `<ul class="bullets">${items.map((item) => `<li>${escapeHtml(compactLine(item))}</li>`).join("")}</ul>`;
 }
 
 function table(headers, rows) {
@@ -156,9 +332,9 @@ function timeline(steps) {
       ${steps
         .map(
           (step) => `
-            <div class="timeline__step">
-              <div class="timeline__title">${escapeHtml(step.title)}</div>
-              <div class="timeline__subtitle">${escapeHtml(step.subtitle)}</div>
+              <div class="timeline__step">
+              <div class="timeline__title">${escapeHtml(compactDisplayText(step.title))}</div>
+              <div class="timeline__subtitle">${escapeHtml(compactDisplayText(step.subtitle))}</div>
             </div>
           `,
         )
@@ -538,8 +714,8 @@ const slides = [
           "github.com/signup 공개 가입 화면",
         )}
         <div class="insight-stack">
-          ${card("화면에서 할 일", "이메일, 비밀번호, 사용자명을 입력합니다.\nCountry/Region을 선택합니다.\nCreate account를 누르고 이메일 인증을 진행합니다.", COLORS.blue)}
-          ${card("강사가 말할 것", "사용자명은 공개 주소에 들어갑니다.\n오늘 실습은 유료 결제가 필요 없습니다.\n인증 메일이 안 보이면 스팸함을 확인합니다.", COLORS.red)}
+          ${card("화면에서 할 일", "이메일/비밀번호/사용자명 입력\nCountry/Region 선택\nCreate account 클릭 후 이메일 인증", COLORS.blue)}
+          ${card("강사가 말할 것", "사용자명은 공개 주소에 포함\n오늘 실습은 무료 계정으로 충분\n인증 메일이 안 보이면 스팸함 확인", COLORS.red)}
         </div>
       </div>
     `,
@@ -782,7 +958,7 @@ const slides = [
         ["행 수", "제목 행과 실제 데이터 행을 구분", "모든 파일을 1행 또는 0행으로 보고"],
         ["주의점", "병합 헤더, 빈칸 반복, 기준연도 차이를 언급", "바로 차트부터 만들려고 함"],
       ],
-    ) + `<div style="margin-top:26px" class="note-strip">강사 멘트 | 결과가 나오면 '좋습니다'라고 끝내지 말고, 이 네 가지가 보이는지 같이 표시합니다.</div>`,
+    ) + `<div style="margin-top:26px" class="note-strip">강사 멘트 | 결과 확인 후 멈추지 말고, 네 가지 완료 기준을 함께 표시</div>`,
     notes: "완료 기준을 보여주면 참가자들이 자기 화면을 스스로 점검할 수 있습니다.",
   },
   {
@@ -867,12 +1043,12 @@ const slides = [
   },
   {
     section: "분석",
-    title: "중도탈락률은 기준연도부터 확인합니다",
-    subtitle: "파일명 연도와 실제 기준연도가 한 해 차이 납니다.",
+    title: "중도탈락률은 기준연도부터 확인",
+    subtitle: "파일명 연도와 실제 기준연도는 한 해 차이",
     body: chartShell(
       svgDropoutChart(DATA.dropoutRates, "외국학생 중도탈락률"),
-      "공시 2024 파일의 기준연도 2023 중도탈락률이 6.3%로 가장 높습니다. 단, 파일명 연도와 기준연도를 분리해 설명해야 합니다.",
-      "파일명 연도와 기준연도를 혼동하면 어떤 잘못된 설명이 생길까요?",
+      "공시 2024 파일 / 기준연도 2023\n중도탈락률 6.3%로 최고\n파일명 연도와 기준연도 분리",
+      "혼동하면 생기는 오해는?",
     ),
     notes: "데이터 해석 주의점을 강조하기 좋은 슬라이드입니다. AI에게 기준연도 차이를 설명하라고 시키면 좋은 토론이 됩니다.",
   },
@@ -937,12 +1113,15 @@ const slides = [
     subtitle: "결과 공유는 길게 발표하지 않고 구조를 맞춥니다.",
     body: `
       <div class="grid grid--4">
-        ${card("질문", "무엇을 알고 싶었나?", COLORS.blue)}
-        ${card("근거", "어떤 파일과 숫자를 봤나?", COLORS.teal)}
-        ${card("검증", "무엇을 다시 확인했나?", COLORS.gold)}
-        ${card("다음", "추가로 확인할 것은?", COLORS.red)}
+        ${card("질문", "궁금한 질문", COLORS.blue)}
+        ${card("근거", "확인한 파일과 숫자", COLORS.teal)}
+        ${card("검증", "다시 확인한 기준", COLORS.gold)}
+        ${card("다음", "추가 확인 대상", COLORS.red)}
       </div>
-      <div style="margin-top:28px" class="note-strip">공유 템플릿 | 저는 ○○가 궁금해서 △△ 파일을 봤고, □□라는 숫자를 확인했습니다. 다만 ◇◇는 추가 확인이 필요합니다.</div>
+      <div style="margin-top:28px" class="grid grid--2">
+        ${card("공유 구조", "질문: ○○\n근거: △△ 파일 / □□ 숫자\n검증: 합계·기준연도\n다음: ◇◇ 추가 확인", COLORS.teal)}
+        ${card("말할 때 기준", "30초 안에 끝내기\n숫자는 하나만 강조\n모르는 부분은 다음 질문으로 남기기", COLORS.gold)}
+      </div>
     `,
     notes: "전체 공유 시간이 길어지지 않도록 발표 틀을 고정합니다. 이 템플릿을 쓰면 초보자도 말하기 쉽습니다.",
   },
@@ -1417,8 +1596,8 @@ function renderSlide(slide, index) {
       <article class="${slideClass(slide)}" data-slide="${index + 1}">
         <div class="section-layout">
           <div class="section-number">${escapeHtml(slide.sectionNumber || "")}</div>
-          <h1 class="section-title">${escapeHtml(slide.title)}</h1>
-          <p class="section-subtitle">${escapeHtml(slide.subtitle || "")}</p>
+          <h1 class="section-title">${escapeHtml(compactDisplayText(slide.title))}</h1>
+          <p class="section-subtitle">${escapeHtml(compactDisplayText(slide.subtitle || ""))}</p>
         </div>
         <footer class="slide__footer">
           <span>한성대학교 교수법 워크숍 | AI 에이전트로 데이터 분석 및 발표자료 제작</span>
@@ -1432,8 +1611,8 @@ function renderSlide(slide, index) {
     <article class="${slideClass(slide)}" data-slide="${index + 1}">
       <header class="slide__header">
         <div class="slide__section">${escapeHtml(slide.section || "")}</div>
-        <h1 class="slide__title">${escapeHtml(slide.title)}</h1>
-        ${slide.subtitle ? `<p class="slide__subtitle">${escapeHtml(slide.subtitle)}</p>` : ""}
+        <h1 class="slide__title">${escapeHtml(compactDisplayText(slide.title))}</h1>
+        ${slide.subtitle ? `<p class="slide__subtitle">${escapeHtml(compactDisplayText(slide.subtitle))}</p>` : ""}
       </header>
       <div class="slide__body">${slide.body}</div>
       <footer class="slide__footer">
@@ -1448,11 +1627,12 @@ function render() {
   if (printing) return;
   const slide = slides[currentIndex];
   stage.innerHTML = renderSlide(slide, currentIndex);
+  compactRenderedSlideText(stage);
   slideNumber.textContent = `${currentIndex + 1} / ${slides.length}`;
   progressBar.style.width = `${((currentIndex + 1) / slides.length) * 100}%`;
   prevBtn.disabled = currentIndex === 0;
   nextBtn.disabled = currentIndex === slides.length - 1;
-  document.title = `${slide.title.replace(/\n/g, " ")} | 한성대학교 교수법 워크숍`;
+  document.title = `${compactDisplayText(slide.title).replace(/\n/g, " ")} | 한성대학교 교수법 워크숍`;
   updateNotes();
   updateOverview();
 }
@@ -1476,7 +1656,7 @@ function prev() {
 function updateNotes() {
   const slide = slides[currentIndex];
   notesBody.innerHTML = `
-    <div class="note-block">${escapeHtml(slide.notes || "이 슬라이드에는 별도 진행 메모가 없습니다.")}</div>
+    <div class="note-block">${escapeHtml(compactDisplayText(slide.notes || "이 슬라이드에는 별도 진행 메모 없음"))}</div>
   `;
 }
 
@@ -1486,7 +1666,7 @@ function renderOverview() {
       (slide, index) => `
         <button class="overview-item ${index === currentIndex ? "is-active" : ""}" type="button" data-index="${index}">
           <span class="overview-item__num">${String(index + 1).padStart(2, "0")}</span>
-          <span class="overview-item__title">${escapeHtml(slide.title.replace(/\n/g, " "))}</span>
+          <span class="overview-item__title">${escapeHtml(compactDisplayText(slide.title).replace(/\n/g, " "))}</span>
         </button>
       `,
     )
@@ -1516,6 +1696,7 @@ function renderPrintDeck() {
   printing = true;
   document.body.classList.add("printing");
   stage.innerHTML = slides.map((slide, index) => renderSlide(slide, index)).join("");
+  compactRenderedSlideText(stage);
 }
 
 function restoreFromPrint() {

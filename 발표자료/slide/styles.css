@@ -240,6 +240,15 @@ button {
   gap: 16px;
 }
 
+.grid > *,
+.metric-row > *,
+.chart-layout > *,
+.screenshot-layout > *,
+.codex-guide-layout > *,
+.two-column > * {
+  min-width: 0;
+}
+
 .grid--2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -1044,33 +1053,99 @@ body.printing .overview-panel {
 }
 
 @media (max-width: 900px) {
+  :root {
+    --type-min: 15px;
+    --type-small: 11px;
+    --type-title: 25px;
+    --type-section: 31px;
+  }
+
   body {
     overflow: auto;
+    overflow-x: hidden;
   }
 
   .deck {
+    display: block;
     height: auto;
     min-height: 100vh;
-    padding: 12px 12px 92px;
+    padding: 10px 10px 96px;
   }
 
   .stage {
     width: 100%;
+    max-width: 680px;
+    min-height: calc(100vh - 106px);
+    margin: 0 auto;
+    aspect-ratio: auto;
+    overflow: visible;
   }
 
   .slide {
-    padding: 28px;
-    gap: 16px;
+    position: relative;
+    min-height: calc(100vh - 106px);
+    padding: 18px;
+    gap: 12px;
+    grid-template-rows: auto auto auto;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .slide--cover,
+  .slide--section {
+    grid-template-rows: 1fr auto;
+  }
+
+  .slide__header {
+    gap: 7px;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .slide__section {
+    min-width: 64px;
+    min-height: 24px;
+    padding: 3px 10px;
   }
 
   .slide__title {
-    font-size: 34px;
+    font-size: var(--type-title);
+    line-height: 1.14;
+    overflow-wrap: anywhere;
+    word-break: break-all;
   }
 
   .slide__subtitle {
-    font-size: 20px;
+    font-size: 15px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    word-break: break-all;
   }
 
+  .slide__body,
+  .cover-layout,
+  .section-layout,
+  .two-column {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .slide__footer {
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 9px;
+    line-height: 1.25;
+  }
+
+  .grid,
+  .cover-card,
+  .codex-guide-cards,
+  .insight-stack {
+    gap: 10px;
+  }
+
+  .grid--2,
   .grid--3,
   .grid--4,
   .grid--5,
@@ -1083,8 +1158,32 @@ body.printing .overview-panel {
     grid-template-columns: 1fr;
   }
 
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .timeline__step {
+    min-height: 0;
+    padding: 10px 12px;
+    text-align: left;
+  }
+
+  .timeline__step:not(:last-child)::after {
+    display: none;
+  }
+
+  .timeline__title {
+    font-size: 16px;
+  }
+
+  .timeline__subtitle {
+    margin-top: 4px;
+    font-size: 12px;
+  }
+
   .codex-window {
-    min-height: 360px;
+    min-height: 300px;
   }
 
   .codex-window__body {
@@ -1095,8 +1194,62 @@ body.printing .overview-panel {
     display: none;
   }
 
+  .codex-window__thread {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .codex-window__message,
+  .codex-window__composer {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .codex-window__approval {
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+
+  .screenshot-layout--signup {
+    height: auto;
+  }
+
+  .screenshot-card {
+    max-height: 260px;
+  }
+
+  .screenshot-card img {
+    max-height: 220px;
+  }
+
   .cover-title {
-    font-size: 44px;
+    font-size: 31px;
+    line-height: 1.12;
+  }
+
+  .cover-kicker {
+    margin-bottom: 16px;
+    font-size: 15px;
+  }
+
+  .cover-subtitle,
+  .section-subtitle {
+    font-size: 15px;
+    overflow-wrap: anywhere;
+    word-break: break-all;
+  }
+
+  .cover-subtitle {
+    max-width: 18em;
+  }
+
+  .section-number {
+    font-size: 16px;
+  }
+
+  .section-title {
+    margin: 20px 0 12px;
+    font-size: var(--type-section);
   }
 
   .cover-card {
@@ -1104,17 +1257,98 @@ body.printing .overview-panel {
   }
 
   .chart-card {
-    min-height: 0;
+    min-height: 230px;
+    height: auto;
+    padding: 10px;
   }
 
   .card__title {
-    font-size: 24px;
+    margin-bottom: 8px;
+    font-size: 17px;
   }
 
   .card__body,
   .prompt__text,
   .bullets li {
-    font-size: 20px;
+    font-size: var(--type-min);
+    overflow-wrap: anywhere;
+  }
+
+  .card {
+    min-height: 0;
+    padding: 14px 14px 14px 22px;
+  }
+
+  .metric-row {
+    gap: 10px;
+  }
+
+  .metric {
+    min-height: 76px;
+  }
+
+  .metric__value {
+    font-size: 28px;
+  }
+
+  .metric__label {
+    margin-top: 6px;
+    font-size: 13px;
+  }
+
+  .prompt {
+    width: min(100%, calc(100vw - 56px));
+    max-width: 100%;
+    padding: 14px;
+    overflow: hidden;
+  }
+
+  .prompt__text {
+    max-width: 100%;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  .prompt__label,
+  .prompt__copy {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    padding: 7px 8px;
+    font-size: 12px;
+  }
+
+  .note-strip {
+    padding: 12px 14px;
+    font-size: var(--type-min);
+  }
+
+  .bullets {
+    gap: 9px;
+  }
+
+  .bullets li {
+    padding-left: 20px;
+  }
+
+  .bullets li::before {
+    top: 9px;
+    width: 8px;
+    height: 8px;
+  }
+
+  .chart-title {
+    font-size: 19px;
+  }
+
+  .chart-label {
+    font-size: 13px;
+  }
+
+  .chart-value {
+    font-size: 14px;
   }
 
   .controls {
@@ -1123,7 +1357,76 @@ body.printing .overview-panel {
     justify-content: center;
     transform: none;
     flex-wrap: wrap;
+    gap: 7px;
+    padding: 6px;
     border-radius: 14px;
+  }
+
+  #printBtn {
+    display: none;
+  }
+
+  .control-button {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .slide-meter {
+    min-width: 86px;
+    font-size: 10px;
+  }
+
+  .progress-track {
+    width: 86px;
+  }
+
+  .notes-panel,
+  .overview-panel {
+    top: 10px;
+    right: 10px;
+    width: calc(100vw - 20px);
+    max-height: calc(100vh - 96px);
+  }
+
+  .overview-panel {
+    left: 10px;
+    right: auto;
+  }
+
+  .notes-panel__header,
+  .overview-panel__header {
+    height: 46px;
+    font-size: 15px;
+  }
+
+  .notes-panel__body {
+    max-height: calc(100vh - 142px);
+    padding: 14px;
+  }
+
+  .note-block {
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .overview-list {
+    max-height: calc(100vh - 142px);
+    padding: 12px;
+  }
+
+  .overview-item {
+    grid-template-columns: 36px 1fr;
+    min-height: 46px;
+  }
+
+  .overview-item__num {
+    width: 36px;
+    font-size: 11px;
+  }
+
+  .overview-item__title {
+    font-size: 13px;
   }
 }
 

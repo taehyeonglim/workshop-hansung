@@ -176,6 +176,54 @@ function screenshotFigure(src, alt, caption) {
   `;
 }
 
+function codexDesktopMock() {
+  return `
+    <div class="codex-window" role="img" aria-label="Codex Desktop App의 프로젝트, 스레드, 모드, 브라우저, 터미널, Diff, 승인 요청 영역 예시">
+      <div class="codex-window__bar">
+        <span class="codex-window__dot"></span>
+        <span class="codex-window__dot"></span>
+        <span class="codex-window__dot"></span>
+        <strong>Codex</strong>
+        <span>workshop-hansung</span>
+      </div>
+      <div class="codex-window__body">
+        <aside class="codex-window__sidebar">
+          <div class="codex-window__project">workshop-hansung</div>
+          <div class="codex-window__nav is-active">+ 새 스레드</div>
+          <div class="codex-window__nav">데이터 분석</div>
+          <div class="codex-window__nav">발표자료 제작</div>
+          <div class="codex-window__spacer"></div>
+          <div class="codex-window__nav">Skills</div>
+          <div class="codex-window__nav">Settings</div>
+        </aside>
+        <main class="codex-window__thread">
+          <div class="codex-window__toolbar">
+            <span class="codex-window__mode">Local</span>
+            <span>Browser</span>
+            <span>Terminal</span>
+            <span>Diff</span>
+          </div>
+          <div class="codex-window__message codex-window__message--user">
+            data 폴더의 엑셀을 읽고 분석 계획을 세워줘.
+          </div>
+          <div class="codex-window__message">
+            계획을 세우고 파일 구조를 확인하겠습니다.
+          </div>
+          <div class="codex-window__approval">
+            <strong>권한 요청</strong>
+            <span>네트워크 또는 작업 폴더 밖 접근은 범위를 확인합니다.</span>
+            <div>
+              <button type="button">승인 1회</button>
+              <button type="button">세션 승인</button>
+            </div>
+          </div>
+          <div class="codex-window__composer">Codex에게 다음 작업을 자연어로 지시합니다</div>
+        </main>
+      </div>
+    </div>
+  `;
+}
+
 function chartShell(chartHtml, insight, question, accent = COLORS.red) {
   return `
     <div class="chart-layout">
@@ -467,6 +515,22 @@ const slides = [
       </div>
     `,
     notes: "설치 안내는 길어지기 쉽습니다. 제품 기능보다 오늘의 작업 폴더와 권한 범위에 집중하세요.",
+  },
+  {
+    section: "설치",
+    title: "Codex Desktop App 버튼을 먼저 읽습니다",
+    subtitle: "수강생이 화면에서 길을 잃지 않도록 프로젝트, 스레드, 확인 도구, 승인 요청만 짚습니다.",
+    body: `
+      <div class="codex-guide-layout">
+        ${codexDesktopMock()}
+        <div class="codex-guide-cards">
+          ${card("처음 볼 곳", "프로젝트: 오늘 작업 폴더\n새 스레드: 새 작업 시작\nMode: Local 또는 Worktree 선택", COLORS.blue)}
+          ${card("작업 중 볼 곳", "Browser: 웹 화면 확인\nTerminal: 명령 결과 확인\nDiff: 바뀐 파일 확인\nApproval: 권한 범위 확인", COLORS.gold)}
+          ${card("강의 멘트", "버튼을 외우기보다 '폴더를 열고, 일을 맡기고, 결과를 확인하고, 필요한 권한만 허용한다'는 순서로 안내합니다.", COLORS.teal)}
+        </div>
+      </div>
+    `,
+    notes: "Codex 앱 UI는 업데이트될 수 있습니다. 강의에서는 버튼 이름 자체보다 프로젝트, 새 스레드, Local/Worktree, Browser, Terminal, Diff, Approval의 역할을 잡아주면 충분합니다.",
   },
   {
     section: "설치",

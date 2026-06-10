@@ -565,6 +565,7 @@ button {
 
 .codex-guide-cards {
   display: grid;
+  align-content: start;
   gap: 12px;
   min-height: 0;
 }
@@ -619,7 +620,7 @@ button {
 
 .codex-window__body {
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
+  grid-template-columns: 162px minmax(0, 1fr);
   min-height: 0;
 }
 
@@ -716,6 +717,7 @@ button {
 
 .codex-window__approval {
   display: grid;
+  align-self: start;
   gap: 7px;
   padding: 10px 12px;
   border: 1px solid rgba(198, 69, 69, 0.36);

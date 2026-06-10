@@ -490,7 +490,7 @@ const slides = [
       ])}
       <div class="screenshot-layout screenshot-layout--signup">
         ${screenshotFigure(
-          "./assets/github-signup-form.png",
+          "./assets/github-signup-form.png?v=signup-crop-1",
           "GitHub 가입 화면: 이메일, 비밀번호, 사용자명, 국가/지역 입력 후 Create account 버튼을 누르는 공개 가입 양식",
           "github.com/signup 공개 가입 화면",
         )}

@@ -623,14 +623,14 @@ const slides = [
     subtitle: "긴 설명보다 작은 작업 단위를 반복합니다.",
     body: `
       ${timeline([
-        { title: "보기", subtitle: "강사가 3-5분 시연" },
-        { title: "따라 하기", subtitle: "참가자가 같은 프롬프트 실행" },
-        { title: "확인", subtitle: "행 수·합계·화면 결과 점검" },
-        { title: "고치기", subtitle: "추가 지시로 결과 개선" },
+        { title: "보기", subtitle: "3-5분 시연" },
+        { title: "따라 하기", subtitle: "같은 프롬프트" },
+        { title: "확인", subtitle: "행 수·합계 점검" },
+        { title: "고치기", subtitle: "추가 지시" },
       ])}
       <div class="grid grid--2" style="margin-top:30px">
-        ${card("수강생에게 강조", "처음부터 좋은 질문을 완성하려 하지 않습니다.\nAI가 낸 첫 결과를 보고 다음 질문을 만드는 것이 핵심입니다.\n실습 중에는 결과보다 확인 과정을 말로 남깁니다.")}
-        ${card("강사에게 강조", "막힌 화면은 지나치지 말고 함께 읽습니다.\n설치 실패, 파일 판독 실패, 권한 요청은 모두 좋은 학습 장면입니다.\n멈춘 이유를 질문으로 바꾸게 합니다.", COLORS.blue)}
+        ${card("수강생에게 강조", "처음부터 완성하려 하지 않음\n첫 결과를 보고 다음 질문 만들기\n결과보다 확인 과정을 말로 남기기")}
+        ${card("강사에게 강조", "막힌 화면은 함께 읽기\n설치·판독·권한 문제도 학습 장면\n멈춘 이유를 질문으로 바꾸기", COLORS.blue)}
       </div>
     `,
     notes: "이 슬라이드는 워크숍의 리듬을 정합니다. 한 번에 오래 설명하지 않고 작은 루프를 반복하겠다고 안내합니다.",
@@ -700,13 +700,6 @@ const slides = [
     title: "GitHub 계정부터 준비합니다",
     subtitle: "GitHub를 처음 쓰는 참가자도 가입과 이메일 인증까지 진행할 수 있게 안내합니다.",
     body: `
-      ${timeline([
-        { title: "1 접속", subtitle: "github.com/signup" },
-        { title: "2 입력", subtitle: "이메일/비밀번호/사용자명" },
-        { title: "3 지역", subtitle: "Country/Region" },
-        { title: "4 생성", subtitle: "Create account" },
-        { title: "5 인증", subtitle: "이메일 확인" },
-      ])}
       <div class="screenshot-layout screenshot-layout--signup">
         ${screenshotFigure(
           "./assets/github-signup-form.png?v=signup-crop-1",
@@ -714,8 +707,8 @@ const slides = [
           "github.com/signup 공개 가입 화면",
         )}
         <div class="insight-stack">
-          ${card("화면에서 할 일", "이메일/비밀번호/사용자명 입력\nCountry/Region 선택\nCreate account 클릭 후 이메일 인증", COLORS.blue)}
-          ${card("강사가 말할 것", "사용자명은 공개 주소에 포함\n오늘 실습은 무료 계정으로 충분\n인증 메일이 안 보이면 스팸함 확인", COLORS.red)}
+          ${card("가입 순서", "접속: github.com/signup\n입력: 계정 정보와 Country/Region\n생성: Create account 후 이메일 인증", COLORS.blue)}
+          ${card("현장 체크", "사용자명은 공개 주소에 포함\n무료 계정으로 충분\n메일이 없으면 스팸함 확인", COLORS.red)}
         </div>
       </div>
     `,
@@ -726,13 +719,13 @@ const slides = [
     title: "가입 후 확인할 것",
     subtitle: "가입 완료와 실습 가능 상태는 다릅니다.",
     body: `
-      <div class="grid grid--4">
-        ${card("로그인", "github.com 우측 상단에 내 프로필 아이콘이 보이는지 확인합니다.\n안 보이면 가입이 아니라 로그인 상태부터 다시 봅니다.", COLORS.blue)}
-        ${card("이메일 인증", "인증 메일을 눌렀는지 확인합니다.\n인증 전에는 저장소 생성이나 배포 기능이 제한될 수 있습니다.", COLORS.gold)}
-        ${card("사용자명", "공개 주소에 들어가므로 실명이나 학번을 그대로 쓰지 않도록 안내합니다.\n예: github.com/사용자명", COLORS.red)}
-        ${card("결제 화면", "오늘 실습은 무료 계정으로 충분합니다.\n유료 플랜 안내가 나오면 결제하지 않고 건너뜁니다.", COLORS.green)}
+      <div class="grid grid--2 check-grid">
+        ${card("로그인", "우측 상단 프로필 확인\n안 보이면 로그인부터", COLORS.blue)}
+        ${card("이메일 인증", "인증 메일 클릭\n전에는 저장소·배포 제한 가능", COLORS.gold)}
+        ${card("사용자명", "공개 주소에 포함\n실명·학번 그대로 사용 금지", COLORS.red)}
+        ${card("결제 화면", "무료 계정으로 충분\n유료 안내는 건너뛰기", COLORS.green)}
       </div>
-      <div style="margin-top:28px">${bullets(["기관 메일에서 인증 메일이 늦게 오면 개인 메일을 사용하게 합니다.", "계정 생성이 막히는 참가자는 강사 화면을 보며 검증자 역할로 참여하게 합니다.", "가입 자체가 목표가 아니라 웹 슬라이드를 배포할 준비를 하는 단계라고 설명합니다."])}</div>
+      <div style="margin-top:28px" class="note-strip">운영 기준 | 인증 지연 시 개인 메일 사용 / 계정 생성이 막히면 강사 화면으로 검증자 역할</div>
     `,
     notes: "가입 화면에서 시간이 많이 흐르지 않도록 완료 기준을 명확히 말합니다. 로그인, 이메일 인증, 사용자명만 확인하면 다음으로 넘어갑니다.",
   },
@@ -742,14 +735,14 @@ const slides = [
     subtitle: "기능 목록보다 작업 흐름을 먼저 잡습니다.",
     body: `
       ${timeline([
-        { title: "폴더 열기", subtitle: "workshop-hansung 연결" },
-        { title: "자료 읽기", subtitle: "data 폴더 엑셀 확인" },
-        { title: "파일 만들기", subtitle: "slide HTML/CSS/JS 생성" },
-        { title: "결과 확인", subtitle: "브라우저와 Diff 검토" },
+        { title: "폴더 열기", subtitle: "작업 폴더 연결" },
+        { title: "자료 읽기", subtitle: "data 엑셀 확인" },
+        { title: "파일 만들기", subtitle: "slide 파일 생성" },
+        { title: "결과 확인", subtitle: "Browser/Diff 검토" },
       ])}
       <div class="grid grid--2" style="margin-top:30px">
         ${card("수강생에게 필요한 이해", "Codex는 채팅창이 아니라 작업 폴더 안에서 파일을 읽고 고치고 확인하는 에이전트입니다.\n오늘은 data 폴더와 slide 폴더를 오가며 일하게 합니다.", COLORS.teal)}
-        ${card("강사가 지킬 기준", "버튼을 모두 설명하기보다 오늘 쓰는 버튼만 보여줍니다.\n프로젝트, 새 스레드, Browser, Terminal, Diff, Approval만 잡으면 충분합니다.\n각 버튼은 실제 화면에서 눌러 보며 설명합니다.", COLORS.gold)}
+        ${card("강사가 지킬 기준", "오늘 쓰는 버튼만 보여주기\n프로젝트·새 스레드·Browser·Terminal·Diff·Approval\n실제 화면에서 눌러 보며 설명", COLORS.gold)}
       </div>
     `,
     notes: "Codex 기능을 많이 설명하려고 하면 설치 시간이 길어집니다. 오늘 실제로 쓰는 네 가지 행동으로 압축합니다.",
@@ -778,7 +771,7 @@ const slides = [
         <div class="codex-guide-cards">
           ${card("처음 볼 곳", "프로젝트: 오늘 작업 폴더\n새 스레드: 새 작업 시작\nMode: Local/Worktree 선택", COLORS.blue)}
           ${card("작업 중 볼 곳", "Browser/Terminal: 화면·명령 확인\nDiff/Approval: 변경·권한 확인", COLORS.gold)}
-          ${card("강의 멘트", "폴더를 열고, 일을 맡기고, 결과를 확인한 뒤 필요한 권한만 허용하는 순서로 안내합니다.", COLORS.teal)}
+          ${card("강의 멘트", "폴더 열기 → 일 맡기기 → 결과 확인\n권한은 필요한 것만 허용", COLORS.teal)}
         </div>
       </div>
     `,
@@ -1099,9 +1092,9 @@ const slides = [
     subtitle: "정답보다 근거가 있는 한 문장을 만드는 훈련입니다.",
     body: `
       <div class="grid grid--3">
-        ${card("1. 질문", "내가 궁금한 질문을 하나 고른다.\n예: 외국학생 증가는 어느 국가가 이끌었나?")}
-        ${card("2. 분석", "AI에게 필요한 파일과 계산 방법을 지정한다.\n예: 2023-2025 국가별 총원 증감 계산", COLORS.blue)}
-        ${card("3. 검증", "합계 행, 상위 3개 샘플, 연도 기준을 확인한다.\n예: 총원 증가와 국가별 증가 합계 비교", COLORS.gold)}
+        ${card("1. 질문", "질문 하나 선택\n예: 어느 국가가 이끌었나?")}
+        ${card("2. 분석", "파일과 계산 기준 지정\n예: 국가별 총원 증감", COLORS.blue)}
+        ${card("3. 검증", "합계·상위 샘플 확인\n예: 증가 합계 비교", COLORS.gold)}
       </div>
       <div style="margin-top:26px">${promptBox("실습 프롬프트", PROMPTS.countryGrowth)}</div>
     `,
@@ -1131,10 +1124,10 @@ const slides = [
     subtitle: "AI 분석 결과를 믿기 전에 최소한 이 네 가지를 확인합니다.",
     body: `
       <div class="grid grid--4">
-        ${card("행 수", "파일을 실제로 읽었는가?\n제목 한 줄만 읽고 분석한 것은 아닌가?", COLORS.red)}
-        ${card("합계", "원본 합계 행과 계산 결과가 맞는가?\n비율의 분모가 무엇인가?")}
-        ${card("기준", "파일명 연도와 기준연도는 같은가?\n학기, 모집시기, 학생 구분이 섞였는가?", COLORS.gold)}
-        ${card("해석", "차트가 보여주는 것과 결론이 일치하는가?\n추가로 필요한 맥락은 무엇인가?", COLORS.blue)}
+        ${card("행 수", "파일 전체를 읽었나?\n제목 줄만 본 건 아닌가?", COLORS.red)}
+        ${card("합계", "원본 합계와 맞나?\n비율 분모는 무엇인가?")}
+        ${card("기준", "파일명·기준연도 구분\n학기·학생 구분 확인", COLORS.gold)}
+        ${card("해석", "차트와 결론 일치?\n추가 맥락은 무엇인가?", COLORS.blue)}
       </div>
       <div style="margin-top:28px">${promptBox("검증 프롬프트", PROMPTS.validation)}</div>
     `,
@@ -1271,8 +1264,8 @@ const slides = [
       <div class="two-column">
         ${promptBox("HTML 생성 프롬프트", PROMPTS.htmlDeck)}
         <div class="grid">
-          ${card("왜 웹 슬라이드인가", "링크 하나로 나눌 수 있다.\n수정 후 다시 배포하기 쉽다.\n프롬프트 복사, 메모 토글, 차트 상호작용 같은 기능을 넣을 수 있다.")}
-          ${card("현장 운영 팁", "참가자 전체가 동시에 완성형 HTML을 만들기보다, 먼저 구성안과 1-2장 슬라이드 초안을 만들게 하면 안정적입니다.", COLORS.red)}
+          ${card("왜 웹 슬라이드인가", "링크로 공유\n수정 후 재배포 쉬움\n메모·복사·차트 기능 추가 가능")}
+          ${card("현장 운영 팁", "완성형 HTML보다 구성안 먼저\n1-2장 초안만 만들기", COLORS.red)}
         </div>
       </div>
     `,
@@ -1364,8 +1357,8 @@ const slides = [
       <div class="two-column">
         ${promptBox("메모 작성 프롬프트", PROMPTS.notes)}
         <div class="grid">
-          ${card("진행할 때 좋은 이유", "설치 지연이나 질문으로 흐름이 끊겨도 다음 멘트를 빠르게 회복할 수 있습니다.\n보조 진행자와도 같은 진행 기준을 공유할 수 있습니다.")}
-          ${card("주의", "메모를 그대로 읽으면 강의가 딱딱해집니다. 메모는 진행을 붙잡아주는 기준으로 쓰고, 현장 반응에 맞춰 줄입니다.", COLORS.gold)}
+          ${card("진행할 때 좋은 이유", "흐름이 끊겨도 다음 멘트 회복\n보조 진행자와 기준 공유")}
+          ${card("주의", "메모는 그대로 읽지 않기\n현장 반응에 맞춰 줄이기", COLORS.gold)}
         </div>
       </div>
     `,
@@ -1387,11 +1380,11 @@ const slides = [
       <div class="grid grid--3">
         ${card("A. 내 자료 진단", "파일 구조가 복잡한 엑셀\n학과/수업 운영 데이터\n설문 응답 데이터")}
         ${card("B. 분석 질문 만들기", "무엇을 비교할지\n어떤 기준으로 나눌지\n어떤 검증이 필요한지", COLORS.gold)}
-        ${card("C. 발표자료 바꾸기", "결론형 제목\n차트 선택\n진행 메모 작성\nHTML 배포 흐름", COLORS.blue)}
+        ${card("C. 발표자료 바꾸기", "결론형 제목\n차트 선택\nHTML 배포 흐름", COLORS.blue)}
       </div>
       <div class="grid grid--2" style="margin-top:28px">
-        ${card("운영 방식", "1) 질문을 세 범주 중 하나로 받기\n2) 한 사람의 화면으로 5분 클리닉\n3) 전체에게 일반화할 수 있는 프롬프트를 남기기", COLORS.red)}
-        ${card("진행 기준", "개별 문제를 모두 해결하려 하기보다, 다음에 혼자 이어갈 수 있는 질문 구조를 남깁니다.", COLORS.green)}
+        ${card("운영 방식", "질문은 A/B/C 중 하나\n한 화면 5분\n공통 프롬프트 남기기", COLORS.red)}
+        ${card("진행 기준", "답보다 질문 구조\n좋은 사례는 함께 저장", COLORS.green)}
       </div>
     `,
     notes: "질문을 즉흥적으로 모두 받기보다 범주로 나누면 마지막 시간이 훨씬 차분해집니다.",
@@ -1452,12 +1445,12 @@ const slides = [
     subtitle: "현장에서 가장 많이 생길 상황을 미리 안내합니다.",
     body: `
       <div class="grid grid--3">
-        ${card("설치 실패", "짝꿍 화면으로 관찰 실습\n진행자 데모 중심으로 전환\n마지막에 개인 설치 재시도", COLORS.red)}
-        ${card("파일 못 찾음", "작업 폴더 경로 확인\ndata 폴더 위치 확인\n파일명 변경 여부 확인", COLORS.gold)}
-        ${card("분석 결과 이상", "행 수와 합계 확인\n원본 샘플 행 비교\n기준연도/단위 재확인")}
-        ${card("HTML 생성 지연", "구성안만 먼저 만들기\n슬라이드 1-2장만 만들기\n데모 파일 공유", COLORS.blue)}
-        ${card("GitHub Pages 지연", "로컬 HTML로 발표\n배포는 사후 과제\n실제 URL은 공유 자료로 안내", COLORS.green)}
-        ${card("네트워크 제한", "이미 준비한 분석 결과 사용\n프롬프트 설계 중심으로 진행\n사후에 파일 생성", COLORS.violet)}
+        ${card("설치 실패", "짝꿍 화면으로 관찰\n개인 설치는 마지막", COLORS.red)}
+        ${card("파일 못 찾음", "작업 폴더 확인\ndata 위치와 파일명 확인", COLORS.gold)}
+        ${card("분석 결과 이상", "행 수·합계 확인\n원본 샘플·기준연도 확인")}
+        ${card("HTML 생성 지연", "구성안 먼저 만들기\n슬라이드 1-2장만 제작", COLORS.blue)}
+        ${card("GitHub Pages 지연", "로컬 HTML로 발표\n배포는 사후 과제", COLORS.green)}
+        ${card("네트워크 제한", "준비한 분석 결과 사용\n프롬프트 설계 중심 진행", COLORS.violet)}
       </div>
     `,
     notes: "복구 동선을 말해두면 문제가 생겨도 강의 분위기가 덜 흔들립니다.",
@@ -1470,9 +1463,9 @@ const slides = [
       <div class="big-message big-message--closing">
         <h2 class="big-message__title">
           AI 에이전트 활용 능력은<br />
-          '분석해줘'라고 말하는 능력이 아니라,<br />
-          자료를 확인시키고, 이상한 점을 찾게 하고,<br />
-          검증한 뒤, 결과물로 연결하는 능력입니다.
+          자료를 확인시키고,<br />
+          이상한 점을 찾게 하고,<br />
+          검증해 결과물로 연결하는 능력입니다.
         </h2>
       </div>
       ${timeline([

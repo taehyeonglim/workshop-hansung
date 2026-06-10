@@ -1123,11 +1123,11 @@ const slides = [
     title: "검증 체크리스트",
     subtitle: "AI 분석 결과를 믿기 전에 최소한 이 네 가지를 확인합니다.",
     body: `
-      <div class="grid grid--4">
-        ${card("행 수", "파일 전체를 읽었나?\n제목 줄만 본 건 아닌가?", COLORS.red)}
-        ${card("합계", "원본 합계와 맞나?\n비율 분모는 무엇인가?")}
-        ${card("기준", "파일명·기준연도 구분\n학기·학생 구분 확인", COLORS.gold)}
-        ${card("해석", "차트와 결론 일치?\n추가 맥락은 무엇인가?", COLORS.blue)}
+      <div class="grid grid--4 prompt-check-grid">
+        ${card("행 수", "전체 파일 읽음?\n제목 줄만 아님?", COLORS.red)}
+        ${card("합계", "원본 합계 일치?\n분모 확인?")}
+        ${card("기준", "기준연도 구분\n학기·학생 구분", COLORS.gold)}
+        ${card("해석", "차트·결론 일치?\n추가 맥락?", COLORS.blue)}
       </div>
       <div style="margin-top:28px">${promptBox("검증 프롬프트", PROMPTS.validation)}</div>
     `,
@@ -1242,11 +1242,11 @@ const slides = [
     title: "구성안은 바로 통과시키지 않습니다",
     subtitle: "AI가 만든 목차를 사람의 검수 질문으로 한 번 거릅니다.",
     body: `
-      <div class="grid grid--4">
-        ${card("한 장 한 메시지", "한 슬라이드에 결론이 둘 이상 들어가지 않았는가?", COLORS.blue)}
-        ${card("근거 연결", "각 결론마다 숫자나 표가 붙어 있는가?", COLORS.teal)}
-        ${card("청중 적합성", "교수법 워크숍의 관심사와 연결되는가?", COLORS.gold)}
-        ${card("해석 경계", "데이터가 말하지 않는 원인을 단정하지 않았는가?", COLORS.red)}
+      <div class="grid grid--4 prompt-check-grid">
+        ${card("한 장 한 메시지", "결론은 하나?\n두 메시지 아님?", COLORS.blue)}
+        ${card("근거 연결", "숫자·표가 붙었나?", COLORS.teal)}
+        ${card("청중 적합성", "교수법 맥락 연결?", COLORS.gold)}
+        ${card("해석 경계", "원인 단정 없음?", COLORS.red)}
       </div>
       <div style="margin-top:30px">${promptBox("구성안 검수 프롬프트", `방금 만든 슬라이드 구성안을 검토해줘.
 1) 한 슬라이드에 메시지가 두 개 이상인 장,

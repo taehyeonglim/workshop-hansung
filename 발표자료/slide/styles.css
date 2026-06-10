@@ -510,6 +510,26 @@ button {
   line-height: 1.24;
 }
 
+.prompt-check-grid .card {
+  min-height: 0;
+  padding: 17px 16px 16px 26px;
+}
+
+.prompt-check-grid .card__title {
+  margin-bottom: 7px;
+  font-size: 24px;
+}
+
+.prompt-check-grid .card__body {
+  gap: 3px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.prompt-check-grid .card__body li {
+  padding-left: 15px;
+}
+
 .metric-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

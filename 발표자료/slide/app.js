@@ -600,9 +600,9 @@ const slides = [
       <div class="codex-guide-layout">
         ${codexDesktopMock()}
         <div class="codex-guide-cards">
-          ${card("처음 볼 곳", "프로젝트: 오늘 작업 폴더\n새 스레드: 새 작업 시작\nMode: Local 또는 Worktree 선택", COLORS.blue)}
-          ${card("작업 중 볼 곳", "Browser: 웹 화면 확인\nTerminal: 명령 결과 확인\nDiff: 바뀐 파일 확인\nApproval: 권한 범위 확인", COLORS.gold)}
-          ${card("강의 멘트", "버튼을 외우기보다 '폴더를 열고, 일을 맡기고, 결과를 확인하고, 필요한 권한만 허용한다'는 순서로 안내합니다.", COLORS.teal)}
+          ${card("처음 볼 곳", "프로젝트: 오늘 작업 폴더\n새 스레드: 새 작업 시작\nMode: Local/Worktree 선택", COLORS.blue)}
+          ${card("작업 중 볼 곳", "Browser/Terminal: 화면·명령 확인\nDiff/Approval: 변경·권한 확인", COLORS.gold)}
+          ${card("강의 멘트", "폴더를 열고, 일을 맡기고, 결과를 확인한 뒤 필요한 권한만 허용하는 순서로 안내합니다.", COLORS.teal)}
         </div>
       </div>
     `,
@@ -1288,8 +1288,8 @@ const slides = [
     title: "마무리 메시지",
     subtitle: "오늘의 핵심은 도구가 아니라 작업 방식입니다.",
     body: `
-      <div style="display:grid;place-items:center;height:58%;text-align:center">
-        <h2 style="max-width:1080px;margin:0;font-size:42px;line-height:1.25">
+      <div class="big-message big-message--closing">
+        <h2 class="big-message__title">
           AI 에이전트 활용 능력은<br />
           '분석해줘'라고 말하는 능력이 아니라,<br />
           자료를 확인시키고, 이상한 점을 찾게 하고,<br />
@@ -1359,16 +1359,11 @@ const slides = [
     title: "개인정보와 민감정보 안내 문구",
     subtitle: "워크숍 시작 전에 짧게 읽어도 좋습니다.",
     body: `
-      <div style="display:grid;place-items:center;height:70%;text-align:center">
-        <p style="max-width:1080px;margin:0;font-size:30px;line-height:1.38;font-weight:800">
-          오늘 실습에서는 공개 가능한 예제 데이터만 사용합니다.<br />
-          학생 개인을 식별할 수 있는 이름, 학번, 연락처, 개별 성적,<br />
-          상담 내용, 민감 설문 응답은 익명화 전에는 AI 도구에 입력하지 않습니다.<br /><br />
-          업무 자료를 사용할 때는 기관 정책과 데이터 등급을 먼저 확인하고,<br />
-          필요 최소한의 범위에서 집계·익명화한 뒤 분석합니다.
-        </p>
+      <div class="grid grid--2 privacy-grid">
+        ${card("오늘 실습 데이터", "공개 가능한 예제 데이터만 사용합니다.\n이름, 학번, 연락처, 개별 성적, 상담 내용, 민감 설문 응답은 AI 도구에 입력하지 않습니다.", COLORS.red)}
+        ${card("업무 자료를 다룰 때", "기관 정책과 데이터 등급을 먼저 확인합니다.\n필요 최소한의 범위에서 집계·익명화한 뒤 분석합니다.", COLORS.blue)}
       </div>
-      <div class="note-strip">진행 보충 | 개인정보 문제는 'AI를 쓰지 말자'가 아니라 쓸 수 있는 데이터 상태로 만들자는 방향으로 설명합니다.</div>
+      <div class="note-strip">진행 보충 | 개인정보는 '쓰지 말자'보다 집계·익명화해 쓸 수 있는 상태로 만들자는 방향으로 설명합니다.</div>
     `,
     notes: "이 문구는 기관 정책에 맞춰 수정해서 쓰세요.",
   },
